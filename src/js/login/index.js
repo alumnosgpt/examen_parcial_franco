@@ -15,7 +15,7 @@ const login = async e => {
     }
 
     try {
-        const url = '/login_prueba/API/login'
+        const url = '/examen_parcial_franco/API/login'
 
         const body = new FormData(formLogin);
         
@@ -47,7 +47,7 @@ const login = async e => {
             icon
         }).then((e)=>{
             if(codigo == 1){
-                location.href = '/login_prueba/menu'
+                location.href = '/examen_parcial_franco/menu'
             }
         })
 
