@@ -7,9 +7,13 @@ use Controllers\AppController;
 use Controllers\DetalleController;
 use Controllers\LoginController;
 use Controllers\ProductoController;
+use Controllers\UsuarioController;
 
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
+
+$router->get('/usuarios', [UsuarioController::class,'index'] );
+$router->post('/API/usuarios/guardar', [UsuarioController::class,'guardarAPI'] );
 
 $router->get('/', [LoginController::class,'index']);
 $router->get('/menu', [LoginController::class,'menu']);
