@@ -6,7 +6,7 @@
     <script src="<?= asset('build/js/app.js') ?>"></script>
     <link rel="shortcut icon" href="<?= asset('images/cit.png') ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= asset('build/styles.css') ?>">
-    <title>REGISTRO</title>
+    <title>INICIO</title>
 </head>
 <body class="bg-image bg-opacity-50">
     <div class="bg-light bg-opacity-10 w-100" style="height: 100vh;">
