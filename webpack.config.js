@@ -8,10 +8,10 @@ module.exports = {
     'js/inicio' : './src/js/inicio.js',
     'js/login/index' : './src/js/login/index.js',
     'js/productos/index' : './src/js/productos/index.js',
-    'js/usuarios/index' : './src/js/usuario/index.js',
+    'js/usuario/index' : './src/js/usuario/index.js',
     'js/productos/estadistica' : './src/js/productos/estadistica.js',
-    'js/permisos/index' : './src/js/permisos/index.js',
-    'js/rol/index' : './src/js/rol/index.js',
+    'js/permiso/index' : './src/js/permiso/index.js',
+    'js/roles/index' : './src/js/es/index.js',
   },
   output: {
     filename: '[name].js',
