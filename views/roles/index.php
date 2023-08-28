@@ -22,4 +22,7 @@
         </div>
     </form>
 </div>
+<div class="d-flex justify-content-center">
+    <a href="/examen_parcial_franco/menu" class="btn btn-sm btn-danger">CANCELAR</a>
+</div>
 <script src="<?= asset('./build/js/roles/index.js') ?>"></script>
