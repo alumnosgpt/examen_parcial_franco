@@ -1,3 +1,4 @@
+
 <h1 class="text-center">ROLES</h1>
 <div class="row justify-content-center mb-5">
     <form class="col-lg-8 border bg-light p-3" id="formularioRol">
@@ -12,8 +13,11 @@
             <div class="col">
                 <button type="submit" form="formularioRol" id="btnGuardar" data-saludo= "hola" data-saludo2="hola2" class="btn btn-primary w-100">Guardar</button>
             </div>
-            <div class="text-center mt-3">
-                <a href="/examen_parcial_franco/menu" class="btn logout-btn">CANCELAR</a>
+            <div class="col">
+                <button type="button" id="btnModificar" class="btn btn-warning w-100">Modificar</button>
+            </div>
+            <div class="col">
+            <button type="button" id="btnCancelar" class="btn btn-danger w-100">Cancelar</button>
             </div>
         </div>
     </form>
