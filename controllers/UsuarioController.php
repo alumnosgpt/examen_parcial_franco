@@ -55,7 +55,7 @@ class UsuarioController
         } catch (Exception $e) {
             echo json_encode([
                 'detalle' => $e->getMessage(),
-                'mensaje' => 'Ocurrió un error',
+                'mensaje' => 'El usuario ya existe, ingrese uno nuevo',
                 'codigo' => 0
             ]);
         }
