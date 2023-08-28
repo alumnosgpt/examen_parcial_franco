@@ -1,4 +1,3 @@
-
 <h1 class="text-center">ROLES</h1>
 <div class="row justify-content-center mb-5">
     <form class="col-lg-8 border bg-light p-3" id="formularioRol">
@@ -24,12 +23,5 @@
             </div>
         </div>
     </form>
-</div>
-<h1>Datatable de productos</h1>
-<div class="row justify-content-center">
-    <div class="col table-responsive">
-        <table id="tablaRol" class="table table-bordered table-hover">
-        </table>
-    </div>
 </div>
 <script src="<?= asset('./build/js/roles/index.js') ?>"></script>

@@ -20,7 +20,7 @@
       <a href="/examen_parcial_franco/estadistica2" class="btn btn-link menu-link">ESTADISTICA ACTIVOS E INACTIVOS</a>
     </div>
     <div class="text-center mt-3">
-      <a href="/examen_parcial_franco/logout" class="btn logout-btn">Cerrar sesión</a>
+      <a href="/examen_parcial_franco/logout" class="btn logout-btn">CERRAR SESIÓN</a>
     </div>
   </div>
 </body>
