@@ -50,7 +50,7 @@
       <a href="/examen_parcial_franco/roles" class="btn btn-link menu-link">CREAR UN NUEVO ROL</a>
       <a href="/examen_parcial_franco/usuarios" class="btn btn-link menu-link">LISTA DE USUARIOS</a>
       <a href="/examen_parcial_franco/permisos" class="btn btn-link menu-link">ASIGNAR ROLES. ACTIVAR Y DESACTIVAR</a>
-      <a href="/examen_parcial_franco/estadistica1" class="btn btn-link menu-link">ESTADISTICA PERSONAS ROLES</a>
+      <a href="/examen_parcial_franco/estadistica" class="btn btn-link menu-link">ESTADISTICA PERSONAS ROLES</a>
       <a href="/examen_parcial_franco/estadistica2" class="btn btn-link menu-link">ESTADISTICA ACTIVOS E INACTIVOS</a>
     </div>
     <div class="text-center mt-3">
