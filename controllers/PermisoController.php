@@ -130,10 +130,8 @@ class PermisoController
             ]);
         }
     }
-
     public static function activarAPI(){
        
-    
         try {
             $usu_id = $_POST['usu_id'];
             $sql = "UPDATE usuario set usu_estado = 'ACTIVO' where usu_id = ${usu_id}";

@@ -1,6 +1,6 @@
 import { Dropdown } from "bootstrap";
 import Swal from "sweetalert2";
-import { validarFormulario, Toast} from "../funciones";
+import { validarFormulario, Toast, confirmacion} from "../funciones";
 import Datatable from "datatables.net-bs5";
 import { lenguaje  } from "../lenguaje";
 
@@ -389,8 +389,6 @@ const cancelarAccion = () => {
     btnCancelar.parentElement.style.display = 'none'
    
 }
-
-
 
 buscar();
 
