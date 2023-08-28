@@ -10,6 +10,7 @@ module.exports = {
     'js/productos/index' : './src/js/productos/index.js',
     'js/usuarios/index' : './src/js/usuario/index.js',
     'js/productos/estadistica' : './src/js/productos/estadistica.js',
+    'js/permisos/index' : './src/js/permisos/index.js',
   },
   output: {
     filename: '[name].js',
