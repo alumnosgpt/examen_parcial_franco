@@ -31,7 +31,7 @@ class RolController
                     'codigo' => 0
                 ]);
             }
-            // echo json_encode($resultado);
+
         } catch (Exception $e) {
             echo json_encode([
                 'detalle' => $e->getMessage(),
@@ -58,7 +58,7 @@ class RolController
                     'codigo' => 0
                 ]);
             }
-            // echo json_encode($resultado);
+
         } catch (Exception $e) {
             echo json_encode([
                 'detalle' => $e->getMessage(),
@@ -87,7 +87,7 @@ class RolController
                     'codigo' => 0
                 ]);
             }
-            // echo json_encode($resultado);
+        
         } catch (Exception $e) {
             echo json_encode([
                 'detalle' => $e->getMessage(),
