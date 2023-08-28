@@ -11,7 +11,7 @@ class UsuarioController
 
     public static function index(Router $router)
     {
-        $usuarios = usuario::all();
+        $usuarios = Usuario::all();
         $router->render('usuarios/index', [
             'usuarios' => $usuarios,
         ]);
@@ -23,7 +23,6 @@ class UsuarioController
             $nombre = $_POST["usu_nombre"];
             $catalogo = $_POST["usu_catalogo"];
             $password = $_POST["usu_password"];
-            $confirm_password = $_POST["usu_confirm_password"];
 
             if ($password) {
                 // Hash de la contraseña

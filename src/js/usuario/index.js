@@ -1,12 +1,12 @@
 import { Dropdown } from "bootstrap";
 import Swal from "sweetalert2";
-import { validarFormulario, Toast, confirmacion } from "../funciones";
+import { validarFormulario, Toast } from "../funciones";
 
 const formulario = document.getElementById('formularioUsuarios');
 const btnGuardar = document.getElementById('btnGuardar');
 
-const guardar = async (evento) => {
-    evento.preventDefault();
+const guardar = async () => {
+    // evento.preventDefault();
     if (!validarFormulario(formulario, ['usu_id'])) {
         Toast.fire({
             icon: 'info',
