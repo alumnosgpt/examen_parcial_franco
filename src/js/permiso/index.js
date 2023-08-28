@@ -7,7 +7,6 @@ import { lenguaje  } from "../lenguaje";
 
 const formulario = document.querySelector('form')
 const btnGuardar = document.getElementById('btnGuardar');
-const btnBuscar = document.getElementById('btnBuscar');
 const btnModificar = document.getElementById('btnModificar');
 const btnCancelar = document.getElementById('btnCancelar');
 
