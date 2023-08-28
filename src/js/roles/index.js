@@ -18,7 +18,7 @@ btnCancelar.disabled = true
 btnCancelar.parentElement.style.display = 'none'
 
 let contador = 1; 
-const datatable = new Datatable('#tablaPermisos', {
+const datatable = new Datatable('#tablaRol', {
     language : lenguaje,
     data : null,
     columns: [
@@ -28,52 +28,30 @@ const datatable = new Datatable('#tablaPermisos', {
             
         },
         {
-            title : 'USUARIO',
-            data: 'permiso_usuario'
-        },
-        {
-            title : 'PERMISO',
-            data: 'permiso_rol',
-        },
-        {
-            title : 'ESTADO',
-            data: 'usu_estado',
+            title : 'ROLES',
+            data: 'rol_nombre'
         },
         {
             title : 'MODIFICAR',
-            data: 'permiso_id',
+            data: 'rol_id',
             searchable : false,
             orderable : false,
-            render : (data, type, row, meta) => `<button class="btn btn-warning" data-id='${data}' data-usuario='${row["permiso_usuario"]}' data-rol='${row["permiso_rol"]}' >Modificar</button>`
+            render : (data, type, row, meta) => `<button class="btn btn-warning" data-id='${data}' data-nombre='${row["rol_nombre"]}'>Modificar</button>`
         },
         {
             title : 'ELIMINAR',
-            data: 'permiso_id',
+            data: 'rol_id',
             searchable : false,
             orderable : false,
             render : (data, type, row, meta) => `<button class="btn btn-danger" data-id='${data}' >Eliminar</button>`
         },
-        {
-            title : 'ACTIVAR',
-            data: 'usu_id',
-            searchable : false,
-            orderable : false,
-            render : (data, type, row, meta) => row['usu_estado'].trim()==='PENDIENTE' || row['usu_estado'].trim()==='INACTIVO'? `<button class="btn btn-success" data-id='${data}' >Activar</button>` :''
-        },
-        {
-            title : 'DESACTIVAR',
-            data: 'usu_id',
-            searchable : false,
-            orderable : false,
-            render : (data, type, row, meta) => row['usu_estado'].trim()==='ACTIVO'? `<button class="btn btn-info" data-id='${data}' >DESACTIVAR</button>`: ''
-        },
+
     ]
 })
 
 const buscar = async () => {
-    let permiso_usuario = formulario.permiso_usuario.value;
-    let permiso_rol = formulario.permiso_rol.value;
-    const url = `/examen_parcial_franco/API/permisos/buscar?permiso_usuario=${permiso_usuario}&permiso_rol=${permiso_rol}`;
+    let rol_nombre = formulario.rol_nombre.value;
+    const url = `/examen_parcial_franco/API/roles/buscar?rol_nombre=${rol_nombre}`;
     const config = {
         method : 'GET'
     }
@@ -81,8 +59,9 @@ const buscar = async () => {
     try {
         const respuesta = await fetch(url, config)
         const data = await respuesta.json();
-
+        console.log('TEST')
         console.log(data);
+        
         datatable.clear().draw()
         if(data){
             contador = 1;
@@ -101,7 +80,7 @@ const buscar = async () => {
 
 const guardar = async (evento) => {
     evento.preventDefault();
-    if(!validarFormulario(formulario, ['permiso_id'])){
+    if(!validarFormulario(formulario, ['rol_id'])){
         Toast.fire({
             icon: 'info',
             text: 'Debe llenar todos los datos'
@@ -110,8 +89,8 @@ const guardar = async (evento) => {
     }
 
     const body = new FormData(formulario)
-    body.delete('permiso_id')
-    const url = '/examen_parcial_franco/API/permisos/guardar';
+    body.delete('rol_id')
+    const url = '/examen_parcial_franco/API/roles/guardar';
     const headers = new Headers();
     headers.append("X-Requested-With", "fetch");
     const config = {
@@ -155,30 +134,28 @@ const guardar = async (evento) => {
 const traeDatos = (e) => {
     const button = e.target;
     const id = button.dataset.id;
-    const usuario = button.dataset.usuario;
-    const rol = button.dataset.rol;
+    const nombre = button.dataset.nombre;
 
     const dataset = {
         id,
-        usuario,
-        rol
+        nombre
     };
     colocarDatos(dataset);
         const body = new FormData(formulario);
-        body.append('permiso_id', id);
-        body.append('permiso_usuario', usuario);
-        body.append('permiso_rol', rol);   
+        body.append('rol_id', id);
+        body.append('rol_nombre', nombre); 
 };
 
 
-const modificar = async () => {
+const modificar = async (evento) => {
+    evento.preventDefault();
     if(!validarFormulario(formulario)){
         alert('Debe llenar todos los campos');
         return 
     }
-
-    const body = new FormData(formulario)
-    const url = '/examen_parcial_franco/API/permisos/modificar';
+    
+    const body = new FormData(formulario)    
+    const url = '/examen_parcial_franco/API/roles/modificar';
     const config = {
         method : 'POST',
         body
@@ -223,8 +200,8 @@ const eliminar = async (e) => {
     // console.log(id)
     if(await confirmacion('warning','¿Desea eliminar este registro?')){
         const body = new FormData()
-        body.append('permiso_id', id)
-        const url = '/examen_parcial_franco/API/permisos/eliminar';
+        body.append('rol_id', id)
+        const url = '/examen_parcial_franco/API/roles/eliminar';
         const headers = new Headers();
         headers.append("X-Requested-With","fetch");
         const config = {
@@ -234,7 +211,7 @@ const eliminar = async (e) => {
         try {
             const respuesta = await fetch(url, config)
             const data = await respuesta.json();
-            // console.log(data)
+            console.log(data)
             const {codigo, mensaje,detalle} = data;
     
             let icon = 'info'
@@ -263,108 +240,9 @@ const eliminar = async (e) => {
         }
     }
 }
-
-
-const activar = async (e) => {
-    const button = e.target;
-    const id = button.dataset.id
-    
-    console.log(id)
-    if(await confirmacion('warning','¿Desea activar este usuario?')){
-        const body = new FormData()
-        body.append('usu_id', id)
-        const url = '/examen_parcial_franco/API/permisos/activar';
-        const headers = new Headers();
-        headers.append("X-Requested-With","fetch");
-        const config = {
-            method : 'POST',
-            body
-        }
-        try {
-            
-            const respuesta = await fetch(url, config)    
-            const data = await respuesta.json();
-            const {codigo, mensaje} = data;
-    
-            let icon = 'info'
-            switch (codigo) {
-                case 1:
-                    icon = 'success'
-                    buscar();
-                    break;
-            
-                case 0:
-                    icon = 'error'
-                    console.log(mensaje)
-                    break;
-            
-                default:
-                    break;
-            }
-    
-            Toast.fire({
-                icon,
-                text: mensaje
-            })
-    
-        } catch (error) {
-            console.log(error);
-        }
-    }
-}
-
-const desactivar = async (e) => {
-    const button = e.target;
-    const id = button.dataset.id
-    
-    console.log(id)
-    if(await confirmacion('warning','¿Desea desactivar este usuario?')){
-        const body = new FormData()
-        body.append('usu_id', id)
-        const url = '/examen_parcial_franco/API/permisos/desactivar';
-        const headers = new Headers();
-        headers.append("X-Requested-With","fetch");
-        const config = {
-            method : 'POST',
-            body
-        }
-        try {
-            
-            const respuesta = await fetch(url, config)    
-            const data = await respuesta.json();
-            const {codigo, mensaje} = data;
-    
-            let icon = 'info'
-            switch (codigo) {
-                case 1:
-                    icon = 'success'
-                    buscar();
-                    break;
-            
-                case 0:
-                    icon = 'error'
-                    console.log(mensaje)
-                    break;
-            
-                default:
-                    break;
-            }
-    
-            Toast.fire({
-                icon,
-                text: mensaje
-            })
-    
-        } catch (error) {
-            console.log(error);
-        }
-    }
-}
 const colocarDatos = (dataset) => {
-    formulario.permiso_usuario.value = dataset.usuario;
-    formulario.permiso_rol.value = dataset.rol;
-
-    formulario.permiso_id.value = dataset.id;
+    formulario.rol_nombre.value = dataset.nombre;
+    formulario.rol_id.value = dataset.id;
 
     btnGuardar.disabled = true
     btnGuardar.parentElement.style.display = 'none';
@@ -375,7 +253,7 @@ const colocarDatos = (dataset) => {
     btnCancelar.disabled = false
     btnCancelar.parentElement.style.display = '';
 
-  
+   // divTabla.style.display = 'none';
 }
 
 const cancelarAccion = () => {
@@ -387,7 +265,7 @@ const cancelarAccion = () => {
     btnModificar.parentElement.style.display = 'none'
     btnCancelar.disabled = true
     btnCancelar.parentElement.style.display = 'none'
-   
+   // divTabla.style.display = ''
 }
 
 
@@ -402,5 +280,3 @@ btnCancelar.addEventListener('click', cancelarAccion)
 btnModificar.addEventListener('click', modificar)
 datatable.on('click','.btn-warning', traeDatos )
 datatable.on('click','.btn-danger', eliminar )
-datatable.on('click','.btn-success', activar )
-datatable.on('click','.btn-info', desactivar )

@@ -14,6 +14,10 @@
       <a href="/examen_parcial_franco/productos/datatable" class="btn btn-link menu-link">DATATABLE PRODUCTOS</a>
       <a href="/examen_parcial_franco/productos/estadistica" class="btn btn-link menu-link">ESTADISTICA PRODUCTOS</a>
       <a href="/examen_parcial_franco/permisos" class="btn btn-link menu-link">USUARIOS</a>
+      <a href="/examen_parcial_franco/roles" class="btn btn-link menu-link">roles</a>
+
+      <a href="/examen_parcial_franco/estadistica1" class="btn btn-link menu-link">ESTADISTICA PERSONAS ROLES</a>
+      <a href="/examen_parcial_franco/estadistica2" class="btn btn-link menu-link">ESTADISTICA ACTIVOS E INACTIVOS</a>
     </div>
     <div class="text-center mt-3">
       <a href="/examen_parcial_franco/logout" class="btn logout-btn">Cerrar sesión</a>
